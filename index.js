@@ -1,6 +1,5 @@
 const express = require('express');
-const comments = require('./routes/comments');
-const posts = require('./routes/posts');
+const api = require('./routes');
 
 const app = express();
 const port = 8000;
@@ -13,5 +12,4 @@ app.listen(port, (err) => {
   console.log(`Server is listening on ${port}`);
 });
 
-app.use('/api/comments', comments);
-app.use('/api/posts', posts)
+app.use('/api', api);

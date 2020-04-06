@@ -1,6 +1,6 @@
 const express = require('express');
 const fakePosts = require('./data/posts');
-const fakeComments = require('./data/comments');
+const comments = require('./routes/comments');
 
 const app = express();
 const port = 8000;
@@ -24,10 +24,6 @@ app.get('/api/posts/:id', (req, res) => {
   return res.json(foundPost);
 });
 
-// Get a list of comments
-app.get('/api/comments', (req, res) => {
-  res.json(fakeComments);
-});
 
 app.listen(port, (err) => {
   if (err) {
@@ -35,3 +31,5 @@ app.listen(port, (err) => {
   }
   console.log(`Server is listening on ${port}`);
 });
+
+app.use('/api/comments', comments);
